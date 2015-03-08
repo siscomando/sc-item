@@ -1,0 +1,80 @@
+<link rel="import" href="../font-roboto/roboto.html">
+<link rel="import" href="../core-icon/core-icon.html">
+<link rel="import" href="../paper-item/paper-item.html">
+
+<!--
+sc-item is an menu-item. To choose the icon's type as 0, 1, 2 in according with
+definitions of app.
+
+##### Example
+
+    <sc-item icon="0|1|2" scid="pk">Short Description(20)</sc-item>
+
+@element sc-item
+@blurb Element providing the menu-item to the sisComando app. To better presentation
+<content> must have 20 chars limit.
+@status alpha
+@homepage http://github.com/siscomando/sc-navbar
+-->
+<polymer-element name="sc-item"  attributes="notitle icon scid" extends="paper-item">
+  <template>
+    <link rel="stylesheet" href="sc-item.css">
+    <paper-item>
+        <core-icon icon="{{icons[icon]}}">
+        <!-- CONTENT MUST HAVE 20 CHARS -->
+        </core-icon><content></content> 
+    </paper-item>                                    
+  </template>
+
+  <script>
+    Polymer({     
+      /**
+       * The `author` attribute sets an initial author
+       *
+       * @attribute author
+       * @type string
+       * @default 'Horacio Ibrahim'
+       */     
+      author: 'Horacio Ibrahim', 
+      /**
+       * The `scid` attribute sets an id key. It's the representation of the 
+       * object selected (e.g.: _id, Primary Key).
+       *
+       * @attribute scid
+       * @type string
+       * @default ''
+       */  
+       scid: '',      
+      /**
+       * The `icons` attribute sets an type for the issue as high, 
+       * high-infra, high-x.
+       *
+       *      Usage:
+       *
+       *          icons[0|1|2]
+       * 
+       * @attribute icons
+       * @type string
+       * @default 'error'
+       */      
+      publish: {
+          displaySearch: {value: false, reflect: true},        
+          icons: ['error', 'dns', 'report-problem'],
+      },
+      /* the best place to the constructor for array or object */
+      created: function() {
+        // initialize but it not is turned public to use by users of the element
+        // to turn public to use attributes or publish.
+      },
+      ready: function() {
+        // Ready is a lifecycle callback.
+        // You can do setup work in here.
+        // More info: http://www.polymer-project.org/docs/polymer/polymer.html#lifecyclemethods
+        // simple test alert(this.issueInfo.register);
+
+      },
+    });
+
+  </script>
+
+</polymer-element>
